@@ -1,0 +1,32 @@
+<mat-sidenav-container class="main_component">
+  <mat-sidenav #sidenav>
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page"
+      (onCloseSidenav)="onClose($event, sidenav)" [loggedInUser]="loggedInUser" (onLogout)="logout($event)"></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="max-w-7x1 mx-auto border-x justify-between">
+      <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div> <a routerLink="/main">Szamtech Webshop</a></div>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+          <li *ngIf="!(loggedInUser)" class="nav-a"><a routerLink="/login">Login</a></li>
+          <li *ngIf="loggedInUser" class="nav-a"><a routerLink="/login" (click)="logout()">Logout</a></li>
+          <li><a class="nav-a" routerLink="/signup">Register</a></li>
+          <li><a class="nav-a" routerLink="/main">Main</a></li>
+          <li *ngIf="(loggedInUser?.uid==='KSrTdVUQHcdMbrJ1hVweU9gpDgu1')"><a class="nav-a" routerLink="/admin">Admin</a></li>
+          <li><a class="nav-a" routerLink="/contact">Contact</a></li>
+          <li><a class="nav-a" routerLink="/products">Products</a></li>
+          
+        </ul>
+      </div>
+      
+    </mat-toolbar>
+    <app-header [cart]="cart"></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

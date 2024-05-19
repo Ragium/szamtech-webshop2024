@@ -1,0 +1,15 @@
+{
+  "targets": {
+    "szamtech-webshop202441": {
+      "hosting": {
+        "szamitastechnikai-webshop": [
+          "szamtech-webshop202441"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "szamtech-webshop202441"
+  }
+  
+}
